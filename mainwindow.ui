@@ -154,13 +154,13 @@
      <string>Disconnect</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>50</y>
-      <width>261</width>
-      <height>311</height>
+      <x>190</x>
+      <y>80</y>
+      <width>256</width>
+      <height>192</height>
      </rect>
     </property>
    </widget>

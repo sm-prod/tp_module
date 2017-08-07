@@ -22,6 +22,12 @@ private slots:
 
     void on_pushButton_10_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void readSerial();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -3,6 +3,8 @@
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QString>
+#include <QByteArray>
+#include <QIODevice>
 
 QSerialPort serial;
 
@@ -12,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+    connect(this, SIGNAL(readyRead()) ,this, SLOT(readSerial()), Qt::AutoConnection);
     //read avaible comports
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
     ui->comboBox->addItem(info.portName());
@@ -49,4 +53,30 @@ void MainWindow::on_pushButton_10_clicked()
 {
     //close
     serial.close();
+}
+
+
+void MainWindow::readSerial()
+{
+        QByteArray data;
+        //QApplication::processEvents();
+
+        data= serial.readAll();
+        //data.append(serial.readAll());
+
+        ui->textBrowser->setText("data");
+
+
+}
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->textBrowser->setText("1test-test");
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->textBrowser->append("2test-test");
 }
