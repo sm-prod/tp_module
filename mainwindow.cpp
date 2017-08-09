@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
-    connect(this, SIGNAL(readyRead()) ,this, SLOT(readSerial()), Qt::AutoConnection);
+    connect(&serial, &QSerialPort::readyRead, this, &MainWindow::readSerial);
     //read avaible comports
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
     ui->comboBox->addItem(info.portName());
@@ -39,14 +39,15 @@ void MainWindow::on_pushButton_9_clicked()
         serial.close();
         serial.setPortName(ui->comboBox->currentText());
     }
-
+    serial.open(QSerialPort::ReadWrite);
     //setup COM port
     serial.setBaudRate(QSerialPort::Baud9600);
     serial.setDataBits(QSerialPort::Data8);
     serial.setParity(QSerialPort::NoParity);
     serial.setStopBits(QSerialPort::OneStop);
     serial.setFlowControl(QSerialPort::NoFlowControl);
-    serial.open(QSerialPort::WriteOnly);
+    //connect(&serial, &QSerialPort::readyRead, this, &MainWindow::readSerial);
+
 }
 
 void MainWindow::on_pushButton_10_clicked()
@@ -58,13 +59,24 @@ void MainWindow::on_pushButton_10_clicked()
 
 void MainWindow::readSerial()
 {
-        QByteArray data;
-        //QApplication::processEvents();
+    QByteArray data;
+   /*
+    while (serial.bytesAvailable()<=8)
+    {
+        //qint64 QIODevice::bytesAvailable() const
+        //{
+         //   return buffer.size() + QIODevice::bytesAvailable();
+        //}
+        QApplication::processEvents();
 
-        data= serial.readAll();
-        //data.append(serial.readAll());
+    }
+    */
+    QApplication::processEvents();
 
-        ui->textBrowser->setText("data");
+    //data= serial.readAll();
+    data.append(serial.readAll());
+
+    ui->textBrowser->append(data);
 
 
 }
@@ -79,4 +91,10 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     ui->textBrowser->append("2test-test");
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->textBrowser->textCursor().movePosition(QTextCursor::End);
+    ui->textBrowser->insertPlainText("3test-test\n");
 }

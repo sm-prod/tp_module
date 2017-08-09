@@ -28,6 +28,8 @@ private slots:
 
     void readSerial();
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
