@@ -43,7 +43,7 @@ void MainWindow::on_pushButton_9_clicked()
         serial.close();
         serial.setPortName(ui->comboBox->currentText());
     }
-    serial.open(QSerialPort::ReadWrite);
+
     //setup COM port
     serial.setBaudRate(QSerialPort::Baud9600);
     serial.setDataBits(QSerialPort::Data8);
@@ -51,7 +51,7 @@ void MainWindow::on_pushButton_9_clicked()
     serial.setStopBits(QSerialPort::OneStop);
     serial.setFlowControl(QSerialPort::NoFlowControl);
     //connect(&serial, &QSerialPort::readyRead, this, &MainWindow::readSerial);
-
+    serial.open(QSerialPort::ReadWrite);
 }
 
 void MainWindow::on_pushButton_10_clicked()
@@ -83,17 +83,17 @@ void MainWindow::readSerial()
 
 void MainWindow::on_pushButton_clicked()
 {
-    serial.write("TEST");
+    serial.write("*set_t_A$");
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    ui->textBrowser->setText("1test-test");
+    serial.write("*set_t_B$");
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    ui->textBrowser->append("2test-test");
+    serial.write("*set_t_J$");
 }
 
 
@@ -107,10 +107,25 @@ void MainWindow::writeData(QByteArray data)
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    serial.write("TEST1")
+    serial.write("*set_t_K$");
 }
 
 void MainWindow::on_pushButton_8_clicked()
 {
+    serial.write("*set_t_T$");
+}
 
+void MainWindow::on_pushButton_6_clicked()
+{
+    serial.write("*set_t_N$");
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    serial.write("*set_t_R");
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    serial.write("*set_t_S$");
 }
