@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QByteArray>
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,10 @@ private slots:
     void readSerial();
 
     void on_pushButton_4_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void writeData(QByteArray data);
 
 private:
     Ui::MainWindow *ui;

@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип B</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -50,7 +50,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип J</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип K</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">
@@ -76,7 +76,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип S</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_6">
@@ -89,7 +89,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип N</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_7">
@@ -102,7 +102,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип R</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_8">
@@ -115,7 +115,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Тип A</string>
+     <string>Тип T</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox">
@@ -171,7 +171,7 @@
      <x>0</x>
      <y>0</y>
      <width>668</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
