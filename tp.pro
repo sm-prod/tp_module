@@ -38,3 +38,9 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+
+RC_FILE = resources.rc
+
+DISTFILES += \
+    icon.ico

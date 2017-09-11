@@ -5,6 +5,11 @@
 #include <QString>
 #include <QByteArray>
 #include <QIODevice>
+#include <QFile>// <QTextDocumentWriter>
+#include <QTextStream>
+#include <QDir>
+#include <QDateTime>
+#include <QDesktopServices>
 
 QSerialPort serial;
 
@@ -247,4 +252,22 @@ void MainWindow::on_pushButton_15_clicked()
     QString input = ui->lineEdit->text();
     //char send[16];
     serial.write(qPrintable(input));
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    //QString filePath =
+
+    QDir dir(QDir::homePath() + "/Documents");
+    dir.mkdir("Термопара");
+    QString fname = QDir::homePath() + "/Documents/Термопара/Температура"+QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".txt";
+    QFile file(fname);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        writeData("Ошибка");
+        return;
+    }
+    QTextStream out(&file);//поток для записи текста
+    out << ui->textBrowser->toPlainText();
+    QDesktopServices::openUrl (QUrl::fromLocalFile(QDir::homePath() + "/Documents/Термопара"));
 }
