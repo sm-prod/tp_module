@@ -66,7 +66,7 @@ void MainWindow::on_pushButton_9_clicked()
     }
     else
     {
-        writeData("Порт открыт");
+		writeData("Порт открыт\r\n");
     }
 }
 
@@ -74,7 +74,7 @@ void MainWindow::on_pushButton_10_clicked()
 {
     //close
     serial.close();
-    writeData("Порт закрыт");
+	writeData("Порт закрыт\r\n");
 }
 
 
