@@ -5,11 +5,6 @@
 #include <QString>
 #include <QByteArray>
 #include <QIODevice>
-#include <QFile>// <QTextDocumentWriter>
-#include <QTextStream>
-#include <QDir>
-#include <QDateTime>
-#include <QDesktopServices>
 
 QSerialPort serial;
 
@@ -62,11 +57,11 @@ void MainWindow::on_pushButton_9_clicked()
     //connect(&serial, &QSerialPort::readyRead, this, &MainWindow::readSerial);
     if (!serial.open(QSerialPort::ReadWrite))
     {
-        writeData("Порт не удалось открыть");
+        writeData("Порт не удалось открыть\n");
     }
     else
     {
-		writeData("Порт открыт\r\n");
+        writeData("Порт открыт\n");
     }
 }
 
@@ -74,7 +69,7 @@ void MainWindow::on_pushButton_10_clicked()
 {
     //close
     serial.close();
-	writeData("Порт закрыт\r\n");
+    writeData("Порт закрыт\n");
 }
 
 
@@ -252,22 +247,4 @@ void MainWindow::on_pushButton_15_clicked()
     QString input = ui->lineEdit->text();
     //char send[16];
     serial.write(qPrintable(input));
-}
-
-void MainWindow::on_pushButton_16_clicked()
-{
-    //QString filePath =
-
-    QDir dir(QDir::homePath() + "/Documents");
-    dir.mkdir("Термопара");
-    QString fname = QDir::homePath() + "/Documents/Термопара/Температура"+QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + ".txt";
-    QFile file(fname);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
-        writeData("Ошибка");
-        return;
-    }
-    QTextStream out(&file);//поток для записи текста
-    out << ui->textBrowser->toPlainText();
-    QDesktopServices::openUrl (QUrl::fromLocalFile(QDir::homePath() + "/Documents/Термопара"));
 }
